@@ -15,5 +15,7 @@ public interface FornecedorDAO {
 
     List<Fornecedor> listarTodos();
 
+    void atualizar(Fornecedor fornecedor);
+    
 
 }

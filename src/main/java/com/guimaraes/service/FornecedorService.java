@@ -4,6 +4,7 @@ import com.guimaraes.dao.FornecedorDAO;
 import com.guimaraes.model.Fornecedor;
 
 import java.util.List;
+import java.util.UUID;
 
 public class FornecedorService {
 
@@ -27,4 +28,13 @@ public class FornecedorService {
 
         fornecedorDAO.salvar(fornecedorNovo);
     }
+
+    public void editarInfo(Fornecedor fornecedorAtualizado){
+        if (fornecedorDAO.buscarPorCNPJ(fornecedorAtualizado.getCNPJ()) == null){
+            throw new IllegalArgumentException("Não há fornecedor cadastrado com o CNPJ informado!");
+        }
+
+        fornecedorDAO.atualizar(fornecedorAtualizado);
+    }
+
 }

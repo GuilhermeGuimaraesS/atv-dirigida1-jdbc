@@ -15,8 +15,11 @@ public class Main {
         FornecedorDAO fornecedorDAO = new FornecedorDAOImpl();
         FornecedorService fornecedorService = new FornecedorService(fornecedorDAO);
 
-        Fornecedor fornecedor = new Fornecedor("Predator", "374229");
-        fornecedorService.cadastrar(fornecedor);
+        /*Fornecedor fornecedor = new Fornecedor("Predator", "374229");
+        fornecedorService.cadastrar(fornecedor);*/
+
+        Fornecedor fornecedorAtt = new Fornecedor("Predator", "374229");
+        fornecedorService.editarInfo(fornecedorAtt);
 
         List<Fornecedor> fornecedores =  fornecedorDAO.listarTodos();
         for (Fornecedor fornecedor1 : fornecedores){
