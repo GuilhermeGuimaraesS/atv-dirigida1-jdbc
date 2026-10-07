@@ -7,6 +7,7 @@ import java.util.UUID;
 
 public interface FornecedorDAO {
 
+    void salvar(Fornecedor fornecedor);
 
     Fornecedor buscarPorId(UUID ID);
 

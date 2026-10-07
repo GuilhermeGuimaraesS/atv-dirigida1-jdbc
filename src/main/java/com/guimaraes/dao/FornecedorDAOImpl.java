@@ -21,7 +21,26 @@ public class FornecedorDAOImpl implements FornecedorDAO{
         this.connectionFactory = ConnectionFactory.getInstance();
     }
 
-
+    @Override
+    public void salvar(Fornecedor fornecedor){
+        // As interrogações serão subsituídas pelos parâmetros passados no preparedStatement
+        String sql = """
+                INSERT INTO fornecedor
+                    (nome, CNPJ)
+                VALUES
+                    (?, ?)
+                """;
+        try (
+                Connection connection = ConnectionFactory.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql);
+        ) {
+            statement.setObject(1, fornecedor.getNome());
+            statement.setString(2, fornecedor.getCNPJ());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Override
     public List<Fornecedor> listarTodos(){
@@ -126,6 +145,7 @@ public class FornecedorDAOImpl implements FornecedorDAO{
             throw new RuntimeException(e);
         }
     }
+
 
 
 }
