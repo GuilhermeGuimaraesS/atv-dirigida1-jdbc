@@ -7,6 +7,7 @@ import com.guimaraes.service.FornecedorService;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 public class Main {
 
@@ -15,24 +16,18 @@ public class Main {
         FornecedorDAO fornecedorDAO = new FornecedorDAOImpl();
         FornecedorService fornecedorService = new FornecedorService(fornecedorDAO);
 
-        /*Fornecedor fornecedor = new Fornecedor("Predator", "374229");
-        fornecedorService.cadastrar(fornecedor);*/
-
-        Fornecedor fornecedorAtt = new Fornecedor("Predator", "374229");
-        fornecedorService.editarInfo(fornecedorAtt);
-
         List<Fornecedor> fornecedores =  fornecedorDAO.listarTodos();
+        for (Fornecedor fornecedor1 : fornecedores){
+            IO.println(fornecedor1.toString());
+        }
+        IO.println("-----------------------------------------------");
+
+        fornecedorService.removerFornecedor("0ebdad38-4351-4760-a0a3-0c1993807971");
+
+        IO.println("-----------------------------------------------");
+        fornecedores = fornecedorDAO.listarTodos();
         for (Fornecedor fornecedor1 : fornecedores){
             IO.println(fornecedor1.toString());
         }
     }
 }
-
-        // Bloco para teste de conexão com o BD.
-        /*try (Connection connection = ConnectionFactory.getInstance().getConnection()){
-            IO.println("Conexão realizada com sucesso!");
-        } catch (SQLException e) {
-            IO.println("Erro ao conectar ao banco.");
-            e.printStackTrace();
-        }
-        */

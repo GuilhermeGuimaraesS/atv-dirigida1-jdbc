@@ -37,4 +37,13 @@ public class FornecedorService {
         fornecedorDAO.atualizar(fornecedorAtualizado);
     }
 
+    public void removerFornecedor(String IDString){
+        UUID ID = UUID.fromString(IDString);
+        if (fornecedorDAO.buscarPorId(ID) == null){
+            throw new IllegalArgumentException("Não há fornecedor cadastrado com o ID informado!");
+        }
+
+        fornecedorDAO.excluir(ID);
+    }
+
 }

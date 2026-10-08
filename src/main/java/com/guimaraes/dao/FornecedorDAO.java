@@ -16,6 +16,7 @@ public interface FornecedorDAO {
     List<Fornecedor> listarTodos();
 
     void atualizar(Fornecedor fornecedor);
-    
+
+    void excluir(UUID id);
 
 }
