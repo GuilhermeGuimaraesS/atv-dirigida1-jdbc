@@ -22,12 +22,14 @@ public class Main {
         }
         IO.println("-----------------------------------------------");
 
-        fornecedorService.removerFornecedor("0ebdad38-4351-4760-a0a3-0c1993807971");
+        Fornecedor fornecedorBuscado1 = fornecedorDAO.buscarPorId(
+                UUID.fromString("05935b32-94f6-4e18-a729-ff97ea0b61a6")
+        );
 
+        Fornecedor fornecedorBuscado2 = fornecedorDAO.buscarPorCNPJ("324009");
+
+        IO.println(fornecedorBuscado1.toString());
         IO.println("-----------------------------------------------");
-        fornecedores = fornecedorDAO.listarTodos();
-        for (Fornecedor fornecedor1 : fornecedores){
-            IO.println(fornecedor1.toString());
-        }
+        IO.println(fornecedorBuscado2.toString());
     }
 }
