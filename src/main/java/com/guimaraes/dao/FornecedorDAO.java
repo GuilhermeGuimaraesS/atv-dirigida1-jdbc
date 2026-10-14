@@ -11,7 +11,7 @@ public interface FornecedorDAO {
 
     Fornecedor buscarPorId(UUID ID);
 
-    Fornecedor buscarPorCNPJ(String CNPJ);
+    Fornecedor buscarPorCnpj(String CNPJ);
 
     List<Fornecedor> listarTodos();
 

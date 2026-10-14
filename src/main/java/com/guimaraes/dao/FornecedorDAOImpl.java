@@ -29,14 +29,14 @@ public class FornecedorDAOImpl implements FornecedorDAO{
                 VALUES
                     ('%s', '%s')
                 """,
-                fornecedor.getNome(), fornecedor.getCNPJ()
+                fornecedor.getNome(), fornecedor.getCnpj()
         );
         try (
                 Connection connection = ConnectionFactory.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql);
         ) {
             statement.setObject(1, fornecedor.getNome());
-            statement.setString(2, fornecedor.getCNPJ());
+            statement.setString(2, fornecedor.getCnpj());
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -63,9 +63,9 @@ public class FornecedorDAOImpl implements FornecedorDAO{
         ){
             while(resultSet.next()) {
                 Fornecedor fornecedor = new Fornecedor();
-                fornecedor.setID(resultSet.getObject("id", UUID.class));
+                fornecedor.setId(resultSet.getObject("id", UUID.class));
                 fornecedor.setNome(resultSet.getString("nome"));
-                fornecedor.setCNPJ(resultSet.getString("cnpj"));
+                fornecedor.setCnpj(resultSet.getString("cnpj"));
                 fornecedor.setRegistradoEm(resultSet.getObject("registrado_em", LocalDateTime.class));
                 fornecedores.add(fornecedor);
             }
@@ -100,9 +100,9 @@ public class FornecedorDAOImpl implements FornecedorDAO{
             ) {
                 if (resultSet.next()) {
                     Fornecedor fornecedor = new Fornecedor();
-                    fornecedor.setID(resultSet.getObject("id", UUID.class));
+                    fornecedor.setId(resultSet.getObject("id", UUID.class));
                     fornecedor.setNome(resultSet.getString("nome"));
-                    fornecedor.setCNPJ(resultSet.getString("cnpj"));
+                    fornecedor.setCnpj(resultSet.getString("cnpj"));
                     fornecedor.setRegistradoEm(resultSet.getObject("registrado_em", LocalDateTime.class));
                     return fornecedor;
                 }
@@ -114,7 +114,7 @@ public class FornecedorDAOImpl implements FornecedorDAO{
     }
 
     @Override
-    public Fornecedor buscarPorCNPJ(String CNPJ) {
+    public Fornecedor buscarPorCnpj(String CNPJ) {
 
         String sql = String.format("""
             SELECT
@@ -135,9 +135,9 @@ public class FornecedorDAOImpl implements FornecedorDAO{
             ) {
                 if (resultSet.next()){
                     Fornecedor fornecedor = new Fornecedor();
-                    fornecedor.setID(resultSet.getObject("id", UUID.class));
+                    fornecedor.setId(resultSet.getObject("id", UUID.class));
                     fornecedor.setNome(resultSet.getString("nome"));
-                    fornecedor.setCNPJ(resultSet.getString("cnpj"));
+                    fornecedor.setCnpj(resultSet.getString("cnpj"));
                     fornecedor.setRegistradoEm(resultSet.getObject("registrado_em", LocalDateTime.class));
                     return fornecedor;
                 }
@@ -156,7 +156,7 @@ public class FornecedorDAOImpl implements FornecedorDAO{
                     nome = '%s'
                 WHERE cnpj = '%s'
                 """,
-                fornecedor.getNome(), fornecedor.getCNPJ()
+                fornecedor.getNome(), fornecedor.getCnpj()
         );
 
         try (

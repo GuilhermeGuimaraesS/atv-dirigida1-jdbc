@@ -25,7 +25,7 @@ public class Main {
                 UUID.fromString("05935b32-94f6-4e18-a729-ff97ea0b61a6")
         );
 
-        Fornecedor fornecedorBuscado2 = fornecedorDAO.buscarPorCNPJ("324009");
+        Fornecedor fornecedorBuscado2 = fornecedorDAO.buscarPorCnpj("324009");
 
         IO.println(fornecedorBuscado1.toString());
         IO.println("-----------------------------------------------");
