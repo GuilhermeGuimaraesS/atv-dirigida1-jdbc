@@ -171,15 +171,15 @@ public class FornecedorDAOImpl implements FornecedorDAO{
 
     @Override
     public void excluir(UUID id) {
-        String sql = """
+        String sql = String.format("""
                 DELETE FROM fornecedor 
-                WHERE id = ?
-                """;
+                WHERE id = '%s'
+                """, id
+        );
         try (
                 Connection connection = ConnectionFactory.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql);
         ) {
-            statement.setObject(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
