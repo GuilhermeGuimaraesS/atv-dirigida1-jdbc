@@ -3,7 +3,6 @@ package com.guimaraes.service;
 import com.guimaraes.dao.FornecedorDAO;
 import com.guimaraes.model.Fornecedor;
 
-import java.util.List;
 import java.util.UUID;
 
 public class FornecedorService {

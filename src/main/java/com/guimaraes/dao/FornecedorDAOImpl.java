@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +69,7 @@ public class FornecedorDAOImpl implements FornecedorDAO{
             }
             return fornecedores;
         } catch (SQLException e) {
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         }
 
     }
@@ -78,21 +77,22 @@ public class FornecedorDAOImpl implements FornecedorDAO{
     @Override
     public Fornecedor buscarPorId(UUID id) {
 
-        String sql = """
+        String sql = String.format("""
             SELECT
                 id,
                 nome,
                 cnpj,
                 registrado_em
             FROM fornecedor
-            WHERE id = ?
-            """;
+            WHERE id = '%s'
+            """, id
+        );
 
         try (
                 Connection connection = ConnectionFactory.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql);
         ) {
-            statement.setObject(1, id);
+
             try (
                     ResultSet resultSet = statement.executeQuery();
             ) {
@@ -114,20 +114,20 @@ public class FornecedorDAOImpl implements FornecedorDAO{
     @Override
     public Fornecedor buscarPorCNPJ(String CNPJ) {
 
-        String sql = """
+        String sql = String.format("""
             SELECT
                 id,
                 nome,
                 cnpj,
                 registrado_em
             FROM fornecedor
-            WHERE cnpj = ?
-            """;
+            WHERE cnpj = '%s'
+            """, CNPJ
+        );
         try (
                 Connection connection = ConnectionFactory.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql);
         ) {
-            statement.setObject(1, CNPJ);
             try (
                     ResultSet resultSet = statement.executeQuery();
             ) {

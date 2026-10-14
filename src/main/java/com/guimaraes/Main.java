@@ -5,7 +5,6 @@ import com.guimaraes.dao.FornecedorDAOImpl;
 import com.guimaraes.model.Fornecedor;
 import com.guimaraes.service.FornecedorService;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
