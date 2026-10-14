@@ -150,19 +150,19 @@ public class FornecedorDAOImpl implements FornecedorDAO{
 
     @Override
     public void atualizar(Fornecedor fornecedor){
-        String sql = """
+        String sql = String.format("""
                 UPDATE fornecedor
                 SET
-                    nome = ?
-                WHERE cnpj = ?
-                """;
+                    nome = '%s'
+                WHERE cnpj = '%s'
+                """,
+                fornecedor.getNome(), fornecedor.getCNPJ()
+        );
 
         try (
                 Connection connection = ConnectionFactory.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql);
         ) {
-                statement.setString(1, fornecedor.getNome());
-                statement.setObject(2, fornecedor.getCNPJ());
                 statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
