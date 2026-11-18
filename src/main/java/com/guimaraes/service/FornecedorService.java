@@ -17,11 +17,11 @@ public class FornecedorService {
         if (fornecedorNovo.getNome() == null || fornecedorNovo.getNome().isBlank()) {
             throw new IllegalArgumentException("Nome é obrigatório");
         }
-        if (fornecedorNovo.getCNPJ() == null || fornecedorNovo.getCNPJ().isBlank()) {
+        if (fornecedorNovo.getCnpj() == null || fornecedorNovo.getCnpj().isBlank()) {
             throw new IllegalArgumentException("CNPJ é obrigatório");
         }
 
-        if (fornecedorDAO.buscarPorCNPJ(fornecedorNovo.getCNPJ()) != null){
+        if (fornecedorDAO.buscarPorCnpj(fornecedorNovo.getCnpj()) != null){
             throw new IllegalArgumentException("Esse CNPJ já existe!");
         }
 
@@ -29,7 +29,7 @@ public class FornecedorService {
     }
 
     public void editarInfo(Fornecedor fornecedorAtualizado){
-        if (fornecedorDAO.buscarPorCNPJ(fornecedorAtualizado.getCNPJ()) == null){
+        if (fornecedorDAO.buscarPorCnpj(fornecedorAtualizado.getCnpj()) == null){
             throw new IllegalArgumentException("Não há fornecedor cadastrado com o CNPJ informado!");
         }
 

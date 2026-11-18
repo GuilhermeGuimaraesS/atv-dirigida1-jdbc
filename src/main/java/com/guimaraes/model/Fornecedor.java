@@ -25,7 +25,7 @@ public class Fornecedor {
         return ID;
     }
 
-    public void setID(UUID ID) {
+    public void setId(UUID ID) {
         this.ID = ID;
     }
 
@@ -37,11 +37,11 @@ public class Fornecedor {
         this.nome = nome;
     }
 
-    public String getCNPJ() {
+    public String getCnpj() {
         return CNPJ;
     }
 
-    public void setCNPJ(String CNPJ) {
+    public void setCnpj(String CNPJ) {
         this.CNPJ = CNPJ;
     }
 
