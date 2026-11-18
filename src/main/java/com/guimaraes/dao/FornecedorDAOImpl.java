@@ -23,12 +23,14 @@ public class FornecedorDAOImpl implements FornecedorDAO{
     @Override
     public void salvar(Fornecedor fornecedor){
         // As interrogações serão subsituídas pelos parâmetros passados no preparedStatement
-        String sql = """
+        String sql = String.format("""
                 INSERT INTO fornecedor
                     (nome, CNPJ)
                 VALUES
-                    (?, ?)
-                """;
+                    ('%s', '%s')
+                """,
+                fornecedor.getNome(), fornecedor.getCNPJ()
+        );
         try (
                 Connection connection = ConnectionFactory.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql);
